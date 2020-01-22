@@ -1,24 +1,24 @@
 import MySQLdb
-import sys 
-sys.path.append('C:/Users/900152/Documents/Dados/TrabalhoPython/JM_exerc')
-from model.Back_model import BackEnd
+from model.backend import BackEnd
+from dao.conexao import Conexao
 
-class BackDb:
+class Back_dao(Conexao):
     def select_all(self):
-        comand = 'SELECT * FROM topskills01.02_JM_BackEnd;'
-        selectcomand =  self.cursor.execute(comand)
+        self.cursor.execute('SELECT * FROM 02_JM_BackEnd')
+        selectcomand = self.cursor.fetchall()
         return selectcomand
 
     def select_by_id(self,id):
-        comand = f"SELECT * FROM topskills01.02_JM_BackEnd WHERE ID={id}"
-        idcomand =  self.cursor.execute(comand)
+        self.cursor.execute(f"SELECT * FROM 02_JM_BackEnd")
+        idcomand =  self.cursor.fetchone()
         return idcomand
         
     def update(self, back : BackEnd):
-        comand = f"UPDATE topskills01.02_JM_BackEnd  SET Nome = {back.Nome}, Descricao = '{back.Descricao}', Versao = '{back.Versao}' WHERE ID = {back.id}"
+        comand = f"UPDATE topskills01.02_JM_BackEnd  SET Nome = '{back.Nome}', Descricao = '{back.Descricao}', Versao = '{back.Versao}' WHERE ID = {back.id}"
+        self.cursor.execute(comand)
         self.conexao.commit()
 
-    def save(self, back: BackEnd):
+    def insert(self, back: BackEnd):
         comand = f"""INSERT INTO topskills01.02_JM_BackEnd
         ( 
             Nome
@@ -30,11 +30,12 @@ class BackDb:
             ,'{back.Descricao}'
             ,'{back.Versao}'
         )"""
-        savecomand = self.cursor.execute(comand)
-        return savecomand
+        self.cursor.execute(comand)
+        self.conexao.commit()
     
     def delete(self,id):
         comand = f"DELETE FROM topskills01.02_JM_BackEnd WHERE ID={id}"
         deletecomand = self.cursor.execute(comand)
+        self.conexao.commit()
         return deletecomand
         

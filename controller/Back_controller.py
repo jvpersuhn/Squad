@@ -1,10 +1,8 @@
-from dao.Back_dao import BackDb
-from model.Back_model import BackEnd
-
+from dao.back_dao import Back_dao, BackEnd 
 
 class BackController:
     def __init__(self):
-        self.dao = BackDb()
+        self.dao = Back_dao()
 
     def select_all(self):
         lista = self.dao.select_all()
@@ -15,15 +13,15 @@ class BackController:
         return lista_retorno
         
     
-    def select_by_id(self):
-        lista = self.dao.select_by_id()
+    def select_by_id(self,id):
+        lista = self.dao.select_by_id(id)
         b = BackEnd(lista[0],lista[1],lista[2],lista[3])
         return b
     
     def update(self, back : BackEnd):
         self.dao.update(back)
 
-    def save(self, back : BackEnd):
+    def insert(self, back : BackEnd):
         self.dao.save(back)
         
     def delete(self, id):

@@ -1,24 +1,26 @@
 import MySQLdb
-import sys 
-sys.path.append('C:/Users/900152/Documents/Dados/TrabalhoPython/JM_exerc')
-from model.Front_model import FrontEnd
+from model.frontend import FrontEnd
+from dao.conexao import Conexao
 
-class FrontDb:
+class FrontDb(Conexao):
     def select_all(self):
         comand = 'SELECT * FROM topskills01.02_JM_FrontEnd;'
-        selectcomand =  self.cursor.execute(comand)
-        return selectcomand
+        self.cursor.execute(comand)
+        ret = self.cursor.fetchall()
+        return ret
 
     def select_by_id(self,id):
         comand = f"SELECT * FROM topskills01.02_JM_FrontEnd WHERE ID={id}"
-        idcomand =  self.cursor.execute(comand)
-        return idcomand
+        self.cursor.execute(comand)
+        ret = self.cursor.fetchone()
+        return ret
         
-    def update(self, back : FrontEnd):
-        comand = f"UPDATE topskills01.02_JM_FrontEnd  SET Nome = {front.Nome}, Descricao = '{front.Descricao}', Versao = '{front.Versao}' WHERE ID = {front.id}"
+    def update(self, front : FrontEnd):
+        comand = f"UPDATE topskills01.02_JM_FrontEnd  SET Nome = '{front.Nome}', Descricao = '{front.Descricao}', Versao = '{front.Versao}' WHERE ID = {front.id}"
+        self.cursor.execute(comand)
         self.conexao.commit()
 
-    def save(self, front: FrontEnd):
+    def insert(self, front: FrontEnd):
         comand = f"""INSERT INTO topskills01.02_JM_FrontEnd
         ( 
             Nome
@@ -30,11 +32,12 @@ class FrontDb:
             ,'{front.Descricao}'
             ,'{front.Versao}'
         )"""
-        savecomand = self.cursor.execute(comand)
-        return savecomand
+        self.cursor.execute(comand)
+        self.conexao.commit()
     
     def delete(self,id):
-        comand = f"DELETE FROM topskills01.02_JM_frontEnd WHERE ID={id}"
-        deletecomand = self.cursor.execute(comand)
-        return deletecomand
+        comand = f"DELETE FROM 02_JM_FrontEnd WHERE ID={id};"
+        self.cursor.execute(comand)
+        self.conexao.commit()
+
         
