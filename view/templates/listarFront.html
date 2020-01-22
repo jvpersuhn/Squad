@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Listar Back End</title>
+</head>
+<body>
+    <div class="conteudo">
+            <a class='btn-cadastro' href="/cadastrar">Cadastrar</a>
+            <table id='tabela-pessoa'>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nome</th>
+                        <th>Descricao</th>
+                        <th>Versao</th>
+                        <th></th>
+                    </tr>
+                </thead>
+            <tbody>
+                    {% for p in lista %}
+                    <tr>
+                        <td>{{ p.id }}</td>
+                        <td>{{ p.Nome }}</td>
+                        <td>{{p.Descricao}}</td>
+                        <td>{{p.Versao}}</td>
+                    </tr>
+                    {% endfor %}
+            </tbody>
+        </div>
+</body>
+</html>
