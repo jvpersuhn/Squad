@@ -1,4 +1,4 @@
-from dao.front_dao import FrontDb
+from dao.Front_dao import FrontDb
 from model.frontend import FrontEnd
 
 
