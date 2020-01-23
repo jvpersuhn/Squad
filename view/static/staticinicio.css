@@ -1,0 +1,29 @@
+body{
+    background: #5281f8;
+    color:#000000;
+}
+.botoes{
+    text-align: center;
+}
+
+.botoes input{
+    width: auto;
+    height: auto;
+    margin-right: 2%;
+    border-radius: 4px;
+    background-color: #74ccff;
+    padding: 3px;
+    border: 1px solid #999999;
+    color: #000000;
+    font-size: 17px;
+}
+
+.botoes input:hover{
+    color: #ff0000;
+    background:#0011ff;
+    border: 1px solid #737788;
+}
+
+.texto{
+    font-size: 20px;
+}

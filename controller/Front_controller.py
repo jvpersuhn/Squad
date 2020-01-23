@@ -1,4 +1,4 @@
-from dao.front_dao import FrontDb, FrontEnd
+from dao.Front_dao import FrontDb, FrontEnd
 
 
 class FrontController:
