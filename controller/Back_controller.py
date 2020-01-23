@@ -22,7 +22,7 @@ class BackController:
         self.dao.update(back)
 
     def insert(self, back : BackEnd):
-        self.dao.save(back)
+        self.dao.insert(back)
         
     def delete(self, id):
         self.dao.delete(id)
