@@ -4,6 +4,12 @@ from flask import Flask, render_template, request
 from controller.Front_controller import FrontController, FrontEnd
 from controller.Back_controller import BackController, BackEnd
 from controller.sgbd_controller import SGBD_controller, SGBD
+<<<<<<< HEAD
+=======
+
+
+
+>>>>>>> 3c5d97bbcb3943e409a4d7f8e1d667cf30fb4280
 
 app = Flask(__name__)
 
@@ -30,5 +36,12 @@ def listar_back():
 def listar_sgbd():
     lista_sgbd = sgbdc.select_all()
     return render_template('listarSgbd.html', lista = lista_sgbd)
+
+@app.route('/excluir')
+def excluir():
+    id = (request.args['id'])
+    
+    
+
 
 app.run(debug=True)
