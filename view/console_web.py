@@ -1,6 +1,6 @@
 import sys
 sys.path.append('C:/Users/900152/Documents/Dados/Squad')
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect
 from controller.Front_controller import FrontController, FrontEnd
 from controller.Back_controller import BackController, BackEnd
 from controller.sgbd_controller import SGBD_controller, SGBD
@@ -35,11 +35,17 @@ def listar_sgbd():
     return render_template('listarSgbd.html', a = aaa)
 
 
-@app.route('/excluir')
-def excluir():
-    id = (request.args['id'])
+@app.route('/excluirsgbd')
+def excluirsgbd():
+    return redirect('/listarSgbd')
     
-    
+@app.route('/excluirback')
+def excluirback():
+    return redirect('/listarBack')
+
+@app.route('/excluirfront')
+def excluirfront():
+    return redirect('/listarFront')
 
 
 app.run(debug=True)

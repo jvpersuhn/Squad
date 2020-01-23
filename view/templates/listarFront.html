@@ -8,26 +8,29 @@
 </head>
 <body>
     <div>
-            <a></a>
-            <table>
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Nome</th>
-                        <th>Descricao</th>
-                        <th>Versao</th>
-                    </tr>
-                </thead>
-            <tbody>
-                    {% for p in lista %}
-                    <tr>
-                        <td>{{ p.id }}</td>
-                        <td>{{ p.Nome }}</td>
-                        <td>{{p.Descricao}}</td>
-                        <td>{{p.Versao}}</td>
-                    </tr>
-                    {% endfor %}
-            </tbody>
-        </div>
+        <a></a>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nome</th>
+                    <th>Descricao</th>
+                    <th>Versao</th>
+                </tr>
+            </thead>
+        <tbody>
+                {% for p in lista %}
+                <tr>
+                    <td>{{ p.id }}</td>
+                    <td>{{ p.Nome }}</td>
+                    <td>{{p.Descricao}}</td>
+                    <td>{{p.Versao}}</td>
+                    <td>
+                        <a href="/excluirfront?id={{ p.id }}&id_end={{ p.versao }}" class="excluirfront">Excluir</a>
+                    </td>
+                </tr>
+                {% endfor %}
+        </tbody>
+    </div>
 </body>
 </html>
