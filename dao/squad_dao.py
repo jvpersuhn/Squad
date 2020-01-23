@@ -1,5 +1,8 @@
 from dao.conexao import Conexao
 from model.squad import Squad
+from model.backend import BackEnd
+from model.frontend import FrontEnd
+from model.sgbd import SGBD
 
 class SquadDao(Conexao):
     def select_all(self):
@@ -20,6 +23,6 @@ class SquadDao(Conexao):
         self.cursor.execute(f"DELETE FROM 02_JVP_SQUAD WHERE Id = {id}")
         self.conexao.commit()
     
-    def insert(self, squad : Squad):
-        self.cursor.execute(f"insert into 02_JVP_SQUAD (Nome,Descricao,NumeroPessoas,LinguagemBack,FrameworkFront) values ('{squad.nome}','{squad.descricao}',{squad.numeroPessoas}, '{squad.linguagemBack}','{squad.frameFront}')")
+    def insert(self, squad : Squad, id_back, id_front, id_sgbd):
+        self.cursor.execute(f"insert into 02_JVP_SQUAD (Nome,Descricao,NumeroPessoas,id_front,id_back,id_sgbd) values ('{squad.nome}','{squad.descricao}',{squad.numeroPessoas}, {id_back},{id_front},{id_sgbd})")
         self.conexao.commit()
