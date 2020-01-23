@@ -1,5 +1,4 @@
-from dao.Front_dao import FrontDb
-from model.frontend import FrontEnd
+from dao.front_dao import FrontDb, FrontEnd
 
 
 class FrontController:
