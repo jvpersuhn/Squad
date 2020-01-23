@@ -14,12 +14,12 @@ class Back_dao(Conexao):
         return idcomand
         
     def update(self, back : BackEnd):
-        comand = f"UPDATE topskills01.02_JM_BackEnd  SET Nome = '{back.Nome}', Descricao = '{back.Descricao}', Versao = '{back.Versao}' WHERE ID = {back.id}"
+        comand = f"UPDATE 02_JM_BackEnd  SET Nome = '{back.Nome}', Descricao = '{back.Descricao}', Versao = '{back.Versao}' WHERE ID = {back.id}"
         self.cursor.execute(comand)
         self.conexao.commit()
 
     def insert(self, back: BackEnd):
-        comand = f"""INSERT INTO topskills01.02_JM_BackEnd
+        comand = f"""INSERT INTO 02_JM_BackEnd
         ( 
             Nome
            ,Descricao
@@ -34,7 +34,7 @@ class Back_dao(Conexao):
         self.conexao.commit()
     
     def delete(self,id):
-        comand = f"DELETE FROM topskills01.02_JM_BackEnd WHERE ID={id}"
+        comand = f"DELETE FROM 02_JM_BackEnd WHERE ID={id}"
         deletecomand = self.cursor.execute(comand)
         self.conexao.commit()
         return deletecomand
