@@ -1,4 +1,4 @@
-from dao.back_dao import Back_dao, BackEnd 
+from dao.Back_dao import Back_dao, BackEnd 
 
 class BackController:
     def __init__(self):
@@ -22,7 +22,7 @@ class BackController:
         self.dao.update(back)
 
     def insert(self, back : BackEnd):
-        self.dao.save(back)
+        self.dao.insert(back)
         
     def delete(self, id):
         self.dao.delete(id)
