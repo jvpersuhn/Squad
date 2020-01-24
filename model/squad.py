@@ -4,12 +4,12 @@ class Squad:
         self.nome = nome
         self.descricao = descricao
         self.numeroPessoas = numeroPessoas
-        self.__linguagemBack = None
-        self.__linguagemFront = None
-        self.__sgbd = None
+        self.__linguagemBack = 'Null'
+        self.__linguagemFront = 'Null'
+        self.__sgbd = 'Null'
     
     def __str__(self):
-        return f'{self.id} {self.nome} {self.descricao} {self.numeroPessoas} {self.linguagemBack} {self.frameFront}' 
+        return f'{self.id} {self.nome} {self.descricao} {self.numeroPessoas} {self.linguagemBack} {self.linguagemFront} {self.sgbd}' 
     
     @property
     def linguagemBack(self):
@@ -32,5 +32,5 @@ class Squad:
         return self.__sgbd
 
     @sgbd.setter
-    def sgbd(self):
-        self.sgbd
+    def sgbd(self, l):
+        self.__sgbd = l

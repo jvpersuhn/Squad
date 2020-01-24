@@ -6,23 +6,23 @@ from model.sgbd import SGBD
 
 class SquadDao(Conexao):
     def select_all(self):
-        self.cursor.execute("SELECT * FROM 02_JVP_SQUAD")
+        self.cursor.execute("SELECT * FROM 02_JM_Squad")
         ret = self.cursor.fetchall()
         return ret
 
     def select_byId(self, id):
-        self.cursor.execute(f"SELECT * FROM 02_JVP_SQUAD WHERE Id = {id}")
+        self.cursor.execute(f"SELECT * FROM 02_JM_Squad WHERE Id = {id}")
         ret = self.cursor.fetchone()
         return ret
 
     def update(self, squad : Squad):
-        self.cursor.execute(f"update 02_JVP_SQUAD set Nome = '{squad.nome}', Descricao = '{squad.descricao}', NumeroPessoas = '{squad.numeroPessoas}', LinguagemBack = '{squad.linguagemBack}', FrameworkFront = '{squad.frameFront}'  where Id = {squad.id}")
+        self.cursor.execute(f"update 02_JM_Squad set Nome = '{squad.nome}', Descricao = '{squad.descricao}', NumeroPessoas = {squad.numeroPessoas}, id_backEnd = {squad.linguagemBack}, id_frontEnd = {squad.linguagemFront}, id_sgbd = {squad.sgbd} where Id = {squad.id}")
         self.conexao.commit()
 
     def delete(self, id):
-        self.cursor.execute(f"DELETE FROM 02_JVP_SQUAD WHERE Id = {id}")
+        self.cursor.execute(f"DELETE FROM 02_JM_Squad WHERE Id = {id}")
         self.conexao.commit()
     
-    def insert(self, squad : Squad, id_back, id_front, id_sgbd):
-        self.cursor.execute(f"insert into 02_JVP_SQUAD (Nome,Descricao,NumeroPessoas,id_front,id_back,id_sgbd) values ('{squad.nome}','{squad.descricao}',{squad.numeroPessoas}, {id_back},{id_front},{id_sgbd})")
+    def insert(self, squad : Squad):
+        self.cursor.execute(f"insert into 02_JM_Squad (Nome,Descricao,NumeroPessoas,id_frontEnd,id_backEnd,id_sgbd) values ('{squad.nome}','{squad.descricao}',{squad.numeroPessoas}, {squad.linguagemBack},{squad.linguagemFront},{squad.sgbd})")
         self.conexao.commit()

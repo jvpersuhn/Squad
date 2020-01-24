@@ -3,12 +3,25 @@ sys.path.append('C:/Users/900152/Documents/Dados/Squad')
 from flask import Flask, render_template, request, redirect
 from controller.Front_controller import FrontController, FrontEnd
 from controller.sgbd_controller import SGBD_controller, SGBD
+<<<<<<< HEAD
 from controller.Back_controller import BackController
+=======
+<<<<<<< HEAD
+=======
+from controller.Back_controller import BackController, BackEnd
+<<<<<<< HEAD
+from controller.squad_controller import SquadController, Squad
+=======
+>>>>>>> 6cb8ad78f30997bd43d876ef3a2c41a1643d1b2b
+>>>>>>> 1d7ee4134c40188f5ce44a438adf59dc0da6cb97
+
+>>>>>>> c2596d73789635e7fa4f7a87d41550ab5354c79b
 app = Flask(__name__)
 
 fc = FrontController()
 bc = BackController()
 sc = SGBD_controller()
+sqc = SquadController()
 
 @app.route('/')
 def principal():
@@ -29,6 +42,10 @@ def listar_back():
 def listar_sgbd():
     lista_sgbd = sc.select_all()
     return render_template('listarSgbd.html', lista = lista_sgbd)
+
+@app.route('/listarSquads')
+def listar_squads():
+    return render_template('listarSquads.html')
 
 @app.route('/excluirsgbd')
 def excluirsgbd():
@@ -83,6 +100,31 @@ def salvarBack():
     bc.insert(back)
     return redirect('/listarBack')
 
+@app.route('/salvarSquad')
+def salvarSquad():
+    if 'id' in request.args:
+        id = int(request.args['id'])
+    else:
+        id = 0
+    nome = request.args['nomeSquad']
+    desc = request.args['descricao']
+    if 'qtdPessoas' in request.args:
+        qtdPessoas = int(request.args['qtdPessoas'])
+    else:
+        qtdPessoas = 0
+    s = Squad(id,nome, desc, qtdPessoas)
+
+    if request.args['sgbd'] != 'Null':
+        s.sgbd = int(request.args['sgbd'])
+    if request.args['frameFront'] != 'Null':
+        s.linguagemFront = int(request.args['frameFront'])
+    if request.args['linguagemBack'] != 'Null':
+        s.linguagemBack = int(request.args['linguagemBack'])
+    
+    sqc.insert(s)
+
+    return redirect('/')
+
 @app.route('/cadastroSGBD')
 def cadastroSGBD():
     return render_template('cadastroSGBD.html')
@@ -94,6 +136,13 @@ def cadastroFront():
 @app.route('/cadastroBack')
 def cadastroBack():
     return render_template('cadastroBack.html')
+
+@app.route('/cadastroSquad')
+def cadastroSquad():
+    ls = sc.select_all()
+    lf = fc.select_all()
+    lb = bc.select_all()
+    return render_template('cadastroSquad.html', lista_sgbd = ls, lista_front = lf, lista_back = lb)
 
 
 app.run(debug=True)
