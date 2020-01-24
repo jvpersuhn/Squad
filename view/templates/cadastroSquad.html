@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Cadastro Squad</title>
+</head>
+<body>
+    <form action="/salvarSquad" method="GET">
+        <input type="text" id="id" name="id" hidden value="0">
+        <label for="nomeSquad">Nome Squad</label>
+        <input type="text" name="nomeSquad" id="nomeSquad">
+        <br>
+        <label for="descricao">Descricao</label>
+        <input type="text" name="descricao" id="descricao">
+        <br>
+        <label for="qtdPessoas">Quantidade de Pessoas</label>
+        <input type="number" name="qtdPessoas" id="qtdPessoas">
+        <br>
+        <label for="sgbd">Sgbd: </label>
+        <select name="sgbd" id="sgbd">
+            <option value="Null">SGBD</option>
+            {% for i in lista_sgbd %}
+                <option value="{{ i.id }}"> {{i.nome}} </option>
+            {% endfor %}
+        </select>
+        <a href="/cadastroSGBD">Cadastar novo SGBD</a>
+        <br>
+        <label for="frameFront">Framework Front: </label>
+        <select name="frameFront" id="frameFront">
+            <option value="Null">FrontEnd</option>
+            {% for i in lista_front %}
+                <option value="{{ i.id }}"> {{ i.nome }} </option>
+            {% endfor %}
+        </select>
+        <a href="/cadastroFront">Cadastar novo Framework</a>
+        <br>
+        <label for="linguagemBack">Linguagem Back: </label>
+        <select name="linguagemBack" id="linguagemBack">
+            <option value="Null">BackEnd</option>
+            {% for i in lista_back %}
+                <option value="{{ i.id }}"> {{ i.nome }} </option>
+            {% endfor %}
+        </select>
+        <a href="/cadastroBack">Cadastrar nova linguagem</a>
+        <br>
+        <input type="submit" value="Salvar">
+    </form>
+</body>
+</html>
