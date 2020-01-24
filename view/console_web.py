@@ -1,10 +1,21 @@
 import sys
+<<<<<<< HEAD
+sys.path.append('C:/Users/900152/Documents/Dados/Squad')
+from flask import Flask, render_template, request
+=======
 sys.path.append('C:/Users/900143/Desktop/Squad')
 from flask import Flask, render_template, request, redirect
+>>>>>>> 6cb8ad78f30997bd43d876ef3a2c41a1643d1b2b
 from controller.Front_controller import FrontController, FrontEnd
 from controller.sgbd_controller import SGBD_controller, SGBD
+<<<<<<< HEAD
+=======
 from controller.Back_controller import BackController, BackEnd
+<<<<<<< HEAD
 from controller.squad_controller import SquadController, Squad
+=======
+>>>>>>> 6cb8ad78f30997bd43d876ef3a2c41a1643d1b2b
+>>>>>>> 1d7ee4134c40188f5ce44a438adf59dc0da6cb97
 
 app = Flask(__name__)
 
