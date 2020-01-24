@@ -8,15 +8,18 @@
     <title>Lista SGBD</title>
 </head>
 <body>
-    <div>
+    <div class = 'conteudo'>
+        <table>
         <a></a>
-        <table class = 'conteudo'>
+            <p id="fonte">Lista SGBD</p>
             <thead>
                 <tr>
                     <th>ID</th>
                     <th>Nome</th>
                     <th>Descricao</th>
                     <th>Versao</th>
+                    <th></th>
+                    <th></th>
                 </tr>
             </thead>
         <tbody>
@@ -28,6 +31,9 @@
                 <td>{{ p.versao }}</td>
                 <td>
                     <a href="/excluirsgbd?id={{ p.id }}&id_end={{ p.versao }}" class="excluirsgbd">Excluir</a>
+                </td>
+                <td>
+                    <a href="/alterarsgbd?id={{ p.id }}&id_end={{ p.versao }}" class="alterarsgbd">Alterar</a>
                 </td>
             </tr>
             {% endfor %}

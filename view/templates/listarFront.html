@@ -8,29 +8,35 @@
     <title>Lista Front End</title>
 </head>
 <body>
-    <div>
+    <div  class = 'conteudo'>
         <a></a>
-        <table class = 'conteudo'>
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Nome</th>
-                    <th>Descricao</th>
-                    <th>Versao</th>
-                </tr>
-            </thead>
-        <tbody>
-                {% for p in lista %}
-                <tr>
-                    <td>{{ p.id }}</td>
-                    <td>{{ p.Nome }}</td>
-                    <td>{{p.Descricao}}</td>
-                    <td>{{p.Versao}}</td>
-                    <td>
-                        <a href="/excluirfront?id={{ p.id }}&id_end={{ p.versao }}" class="excluirfront">Excluir</a>
-                    </td>
-                </tr>
-                {% endfor %}
+            <table>
+            <p id= "fonte">Lista Front-End</p>
+                <thead>
+                    <tr class= 'colunas'>
+                        <th>ID</th>
+                        <th>Nome</th>
+                        <th>Descricao</th>
+                        <th>Versao</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+            <tbody>
+                    {% for p in lista %}
+                    <tr class='linhas'>
+                        <td>{{ p.id }}</td>
+                        <td>{{ p.Nome }}</td>
+                        <td>{{p.Descricao}}</td>
+                        <td>{{p.Versao}}</td>
+                        <td>
+                            <a href="/excluirfront?id={{ p.id }}&id_end={{ p.versao }}" class="excluirfront">Excluir</a>
+                        </td>
+                        <td>
+                            <a href="/alterarfront?id={{ p.id }}&id_end={{ p.versao }}" class="alterarfront">Alterar</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
         </tbody>
     </div>
 </body>

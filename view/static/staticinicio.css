@@ -1,13 +1,15 @@
 body{
-    background: #5281f8;
+    background: #ffffff;
     color:#000000;
 }
 .botoes{
-    text-align: center;
+    top:0;
+    
 }
 
+
 .botoes input{
-    width: auto;
+    width: 300px;
     height: auto;
     margin-right: 2%;
     border-radius: 4px;
@@ -22,6 +24,7 @@ body{
     color: #ff0000;
     background:#0011ff;
     border: 1px solid #737788;
+    cursor: pointer;
 }
 
 .texto{
