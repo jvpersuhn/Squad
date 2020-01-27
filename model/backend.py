@@ -6,4 +6,4 @@ class BackEnd:
         self.versao = Versao
 
     def __str__(self):
-        return  f"{self.id},{self.Nome},{self.Descricao},{self.Versao}"
+        return  f"{self.id},{self.nome},{self.descricao},{self.versao}"

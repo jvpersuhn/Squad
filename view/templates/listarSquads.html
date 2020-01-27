@@ -7,6 +7,35 @@
     <title>Document</title>
 </head>
 <body>
-    
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nome</th>
+                <th>Descrição</th>
+                <th>Numero de pessoas</th>
+                <th>SGBD</th>
+                <th>Front-End</th>
+                <th>Back-End</th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in lista %}
+                <tr>
+                    <td>{{ i.id }}</td>
+                    <td>{{ i.nome }}</td>
+                    <td>{{ i.descricao }}</td>
+                    <td>{{ i.numeroPessoas }}</td>
+                    <td>{{ i.sgbd.nome }}</td>
+                    <td>{{ i.linguagemFront.nome }}</td>
+                    <td>{{ i.linguagemBack.nome }}</td>
+                    <td><a href="/excluirSquad?id={{ i.id }}">Excluir</a></td>
+                    <td><a href="/cadastroSquad?id={{ i.id }}&id_sgbd={{ i.id_sgbd }}&id_front={{ i.id_linguagemFront }}&id_back={{ i.id_linguagemBack }}">Alterar</a></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 </body>
 </html>

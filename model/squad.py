@@ -4,13 +4,40 @@ class Squad:
         self.nome = nome
         self.descricao = descricao
         self.numeroPessoas = numeroPessoas
-        self.__linguagemBack = 'Null'
-        self.__linguagemFront = 'Null'
-        self.__sgbd = 'Null'
+        self.__id_linguagemBack = 'Null'
+        self.__id_linguagemFront = 'Null'
+        self.__id_sgbd = 'Null'
+        self.__linguagemBack = None
+        self.__linguagemFront = None
+        self.__sgbd = None
     
     def __str__(self):
         return f'{self.id} {self.nome} {self.descricao} {self.numeroPessoas} {self.linguagemBack} {self.linguagemFront} {self.sgbd}' 
     
+    @property
+    def id_linguagemBack(self):
+        return self.__id_linguagemBack
+
+    @id_linguagemBack.setter
+    def id_linguagemBack(self, l):
+        self.__id_linguagemBack = l
+
+    @property
+    def id_linguagemFront(self):
+        return self.__id_linguagemFront
+
+    @id_linguagemFront.setter
+    def id_linguagemFront(self, l):
+        self.__id_linguagemFront = l
+
+    @property
+    def id_sgbd(self):
+        return self.__id_sgbd
+
+    @id_sgbd.setter
+    def id_sgbd(self, l):
+        self.__id_sgbd = l
+
     @property
     def linguagemBack(self):
         return self.__linguagemBack

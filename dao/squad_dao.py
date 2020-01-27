@@ -16,7 +16,7 @@ class SquadDao(Conexao):
         return ret
 
     def update(self, squad : Squad):
-        self.cursor.execute(f"update 02_JM_Squad set Nome = '{squad.nome}', Descricao = '{squad.descricao}', NumeroPessoas = {squad.numeroPessoas}, id_backEnd = {squad.linguagemBack}, id_frontEnd = {squad.linguagemFront}, id_sgbd = {squad.sgbd} where Id = {squad.id}")
+        self.cursor.execute(f"update 02_JM_Squad set Nome = '{squad.nome}', Descricao = '{squad.descricao}', NumeroPessoas = {squad.numeroPessoas}, id_backEnd = {squad.id_linguagemBack}, id_frontEnd = {squad.id_linguagemFront}, id_sgbd = {squad.id_sgbd} where Id = {squad.id}")
         self.conexao.commit()
 
     def delete(self, id):
@@ -24,5 +24,5 @@ class SquadDao(Conexao):
         self.conexao.commit()
     
     def insert(self, squad : Squad):
-        self.cursor.execute(f"insert into 02_JM_Squad (Nome,Descricao,NumeroPessoas,id_frontEnd,id_backEnd,id_sgbd) values ('{squad.nome}','{squad.descricao}',{squad.numeroPessoas}, {squad.linguagemBack},{squad.linguagemFront},{squad.sgbd})")
+        self.cursor.execute(f"insert into 02_JM_Squad (Nome,Descricao,NumeroPessoas,id_frontEnd,id_backEnd,id_sgbd) values ('{squad.nome}','{squad.descricao}',{squad.numeroPessoas}, {squad.id_linguagemBack},{squad.id_linguagemFront},{squad.id_sgbd})")
         self.conexao.commit()

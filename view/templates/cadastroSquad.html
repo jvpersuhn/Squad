@@ -8,19 +8,23 @@
 </head>
 <body>
     <form action="/salvarSquad" method="GET">
-        <input type="text" id="id" name="id" hidden value="0">
+        <input type="text" id="id" name="id" hidden value="{{squad.id}}">
         <label for="nomeSquad">Nome Squad</label>
-        <input type="text" name="nomeSquad" id="nomeSquad">
+        <input type="text" name="nomeSquad" id="nomeSquad" value="{{squad.nome}}">
         <br>
         <label for="descricao">Descricao</label>
-        <input type="text" name="descricao" id="descricao">
+        <input type="text" name="descricao" id="descricao" value="squad.descricao">
         <br>
         <label for="qtdPessoas">Quantidade de Pessoas</label>
-        <input type="number" name="qtdPessoas" id="qtdPessoas">
+        <input type="number" name="qtdPessoas" id="qtdPessoas" value="squad.numeroPessoas">
         <br>
         <label for="sgbd">Sgbd: </label>
         <select name="sgbd" id="sgbd">
-            <option value="Null">SGBD</option>
+            {% if squad.linguagemFront == None %}
+                <option value="Null">SGBD</option>
+            {% else %}
+                <option value="{{ squad.lingaugemFront.id }}">{{ squad.linguagemFront.nome }}</option>
+            {% endif %}
             {% for i in lista_sgbd %}
                 <option value="{{ i.id }}"> {{i.nome}} </option>
             {% endfor %}
@@ -29,6 +33,11 @@
         <br>
         <label for="frameFront">Framework Front: </label>
         <select name="frameFront" id="frameFront">
+            {% if squad.linguagemFront == None %}
+                <option value="Null">Front</option>
+            {% else %}
+                <option value="{{ squad.lingaugemFront.id }}">{{ squad.linguagemFront.nome }}</option>
+            {% endif %}
             <option value="Null">FrontEnd</option>
             {% for i in lista_front %}
                 <option value="{{ i.id }}"> {{ i.nome }} </option>
@@ -38,7 +47,11 @@
         <br>
         <label for="linguagemBack">Linguagem Back: </label>
         <select name="linguagemBack" id="linguagemBack">
-            <option value="Null">BackEnd</option>
+            {% if squad.linguagemBack == None %}
+                <option value="Null">BackEnd</option>
+            {% else %}
+                <option value="{{ squad.linguagemBack.id }}">{{ squad.linguagemBack.nome }}</option>
+            {% endif %}
             {% for i in lista_back %}
                 <option value="{{ i.id }}"> {{ i.nome }} </option>
             {% endfor %}

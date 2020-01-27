@@ -1,21 +1,11 @@
 import sys
-<<<<<<< HEAD
-sys.path.append('C:/Users/900152/Documents/Dados/Squad')
-from flask import Flask, render_template, request
-=======
 sys.path.append('C:/Users/900143/Desktop/Squad')
 from flask import Flask, render_template, request, redirect
->>>>>>> 6cb8ad78f30997bd43d876ef3a2c41a1643d1b2b
 from controller.Front_controller import FrontController, FrontEnd
 from controller.sgbd_controller import SGBD_controller, SGBD
-<<<<<<< HEAD
-=======
 from controller.Back_controller import BackController, BackEnd
-<<<<<<< HEAD
 from controller.squad_controller import SquadController, Squad
-=======
->>>>>>> 6cb8ad78f30997bd43d876ef3a2c41a1643d1b2b
->>>>>>> 1d7ee4134c40188f5ce44a438adf59dc0da6cb97
+
 
 app = Flask(__name__)
 
@@ -27,7 +17,6 @@ sqc = SquadController()
 @app.route('/')
 def principal():
     return render_template('index.html')
-
 
 @app.route('/listarFront')
 def listar_front():
@@ -46,18 +35,31 @@ def listar_sgbd():
 
 @app.route('/listarSquads')
 def listar_squads():
-    return render_template('listarSquads.html')
+    lista_squad = sqc.select_all()
+    return render_template('listarSquads.html',lista = lista_squad)
+
+@app.route('/excluirSquad')
+def excluir_squad():
+    id = int(request.args['id'])
+    sqc.delete(id)
+    return redirect('/listarSquads.html')
 
 @app.route('/excluirsgbd')
 def excluirsgbd():
+    id = int(request.args['id'])
+    sc.delete(id)
     return redirect('/listarSgbd')
     
 @app.route('/excluirback')
 def excluirback():
+    id = int(request.args['id'])
+    bc.delete(id)
     return redirect('/listarBack')
 
 @app.route('/excluirfront')
 def excluirfront():
+    id = int(request.args['id'])
+    fc.delete(id)
     return redirect('/listarFront')
 
 @app.route('/salvarSGBD')
@@ -102,11 +104,11 @@ def salvarSquad():
     s = Squad(id,nome, desc, qtdPessoas)
 
     if request.args['sgbd'] != 'Null':
-        s.sgbd = int(request.args['sgbd'])
+        s.id_sgbd = int(request.args['sgbd'])
     if request.args['frameFront'] != 'Null':
-        s.linguagemFront = int(request.args['frameFront'])
+        s.id_linguagemFront = int(request.args['frameFront'])
     if request.args['linguagemBack'] != 'Null':
-        s.linguagemBack = int(request.args['linguagemBack'])
+        s.id_linguagemBack = int(request.args['linguagemBack'])
     
     sqc.insert(s)
 
@@ -126,10 +128,12 @@ def cadastroBack():
 
 @app.route('/cadastroSquad')
 def cadastroSquad():
+    squad = Squad(0,'','','')
+    if 'id' in request.args:
+        squad = sqc.select_byId(request.args['id'])
     ls = sc.select_all()
     lf = fc.select_all()
-    lb = bc.select_all()
-    return render_template('cadastroSquad.html', lista_sgbd = ls, lista_front = lf, lista_back = lb)
-
+    lb = bc .select_all()
+    return render_template('cadastroSquad.html', lista_sgbd = ls, lista_front = lf, lista_back = lb, squad = squad)
 
 app.run(debug=True)
