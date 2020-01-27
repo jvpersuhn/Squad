@@ -1,12 +1,25 @@
 import sys
+<<<<<<< HEAD
 sys.path.append('C:/Users/900143/Desktop/Squad')
 from flask import Flask, render_template, request, redirect
 from controller.Front_controller import FrontController, FrontEnd
 from controller.sgbd_controller import SGBD_controller, SGBD
+=======
+sys.path.append('C:/Users/900152/Documents/Dados/Squad')
+from flask import Flask, render_template, request, redirect
+from controller.Front_controller import FrontController, FrontEnd
+from controller.sgbd_controller import SGBD_controller, SGBD
+<<<<<<< HEAD
+from controller.Back_controller import BackController
+=======
+<<<<<<< HEAD
+=======
+>>>>>>> 76019bae5487d70d18866fafb1d1582e64dcd1de
 from controller.Back_controller import BackController, BackEnd
 from controller.squad_controller import SquadController, Squad
 
 
+>>>>>>> c2596d73789635e7fa4f7a87d41550ab5354c79b
 app = Flask(__name__)
 
 fc = FrontController()
@@ -49,6 +62,10 @@ def excluirsgbd():
     id = int(request.args['id'])
     sc.delete(id)
     return redirect('/listarSgbd')
+
+@app.route('/alterarsgbd')
+def alterarasgbd():
+    return redirect('/listarSgbd')
     
 @app.route('/excluirback')
 def excluirback():
@@ -56,11 +73,21 @@ def excluirback():
     bc.delete(id)
     return redirect('/listarBack')
 
+@app.route('/alterarback')
+def alterarBack():
+    return redirect('/listarBack')
+
 @app.route('/excluirfront')
 def excluirfront():
     id = int(request.args['id'])
     fc.delete(id)
     return redirect('/listarFront')
+
+@app.route('/alterarfront')
+def alterarfront():
+    return redirect('/listarFront')
+
+
 
 @app.route('/salvarSGBD')
 def salvarSGBD():

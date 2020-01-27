@@ -1,17 +1,31 @@
 body{
-    background: #5281f8;
+    background: #acb6f1;
     color:#000000;
 }
 .conteudo{
     width: 300px;
     margin:300px auto;
+    font-size: 150%;
 }
 
+
+table, th, td{
+    border-collapse: collapse;
+    border-style: solid;
+    border-color: #75a6b9;
+}
+#fonte{
+    margin: 50px;
+    font-style: inherit;
+    font-size: 30px;
+}
 .excluirback{
     padding: 0.2em;
     text-decoration: none;
     color:#ffffff;
     background: #0011ff;
+    border-radius: 10px; 
+    font-size: 17px;
 }
 .excluirback:hover{
     color: #ff0000;
@@ -19,6 +33,27 @@ body{
     border: 1px solid #737788;
 }
 
+
+.alterarback{
+    padding: 0.2em;
+    text-decoration: none;
+    color:#ffffff;
+    background: #4955fd;
+    border-radius: 10px; 
+    font-size: 17px;
+}
+
+.alterarback:hover{
+    color: #fffb00;
+    background:#4955fd;
+    border: 1px solid #737788;
+}
+
+
 .nomes{
     background: #ff0000
+}
+
+.table{
+    border: 1px solid blue;
 }

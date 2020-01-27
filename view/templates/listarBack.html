@@ -10,6 +10,7 @@
 <body>
     <div class= "conteudo">
         <a></a>
+        <p id='fonte'>Lista Back-End</p>
             <table id= 'backend'>
                 <thead>
                     <tr>
@@ -17,6 +18,8 @@
                         <th>Nome</th>
                         <th>Descricao</th>
                         <th>Versao</th>
+                        <th></th>
+                        <th></th>
                     </tr>
                 </thead>
             <tbody>
@@ -28,6 +31,9 @@
                         <td>{{p.Versao}}</td>
                         <td>
                             <a href="/excluirback?id={{ p.id }}" class="excluirback">Excluir</a>
+                        </td>
+                        <td>
+                            <a href="/alterarback?id={{ p.id }}&id_end={{ p.versao }}" class="alterarback">Alterar</a>
                         </td>
                     </tr>
                     {% endfor %}
